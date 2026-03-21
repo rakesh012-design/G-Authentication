@@ -17,7 +17,7 @@
       return data
   })*/
 
-  const url= import.meta.env.PROD==='production' ? "" : 'http://localhost:3001'
+  const url= import.meta.env.PROD ? "" : 'http://localhost:3001'
 
   export const loginUser=createAsyncThunk('loginUser',
     async({email,password})=>{
