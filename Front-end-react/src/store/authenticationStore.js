@@ -17,14 +17,14 @@ export const loginUser=createAsyncThunk('loginUser',
     return data
 })*/
 
-const url=`http://localhost:3001`
+const url= process.env.NODE_ENV==='production' ? "https://g-authentication.vercel.app" : 'http://localhost:3001'
 
 export const loginUser=createAsyncThunk('loginUser',
   async({email,password})=>{
    try {
        const userCredentials=await signInWithEmailAndPassword(auth,email,password)
        const idToken=await userCredentials.user.getIdToken()
-       const res=await fetch('/user/login-user',{
+       const res=await fetch(`${url}/user/login-user`,{
          method:"POST",
          credentials:'include',
          headers:{
@@ -50,7 +50,7 @@ export const signupUser=createAsyncThunk('signUpUser',
       const uid=user.uid
       const idToken=await user.getIdToken()
       const email=user.email
-      const res=await fetch('http://localhost:3001/user/signup-user',{
+      const res=await fetch(`${url}/user/signup-user`,{
         method:"POST",
         credentials:'include',
         headers:{"content-type":"application/json"},
@@ -67,7 +67,7 @@ export const signupUser=createAsyncThunk('signUpUser',
 
 export const logoutUser=createAsyncThunk('logoutUser',
   async()=>{
-    const res=await fetch('http://localhost:3001/user/logout',{
+    const res=await fetch(`${url}/user/logout`,{
       method:"GET",
       credentials:'include'
     })
@@ -86,7 +86,7 @@ export const handleGoogleSignup=createAsyncThunk('googleSingnup',
       const email=user.email
       const userName=user.displayName
       const uid=user.uid
-      const res=await fetch('http://localhost:3001/user/signup-user',{
+      const res=await fetch(`${url}/user/signup-user`,{
         method:"POST",
         credentials:'include',
         headers:{'content-type':'application/json'},
@@ -107,7 +107,7 @@ export const handleGoogleLogin=createAsyncThunk('googleLogin',
       const userCredential=await signInWithPopup(auth,googleProvider)
       const user=userCredential.user
       const idToken=await user.getIdToken()
-      const res=await fetch('http://localhost:3001/user/login-user',{
+      const res=await fetch(`${url}/user/login-user`,{
         method:"POST",
         credentials:'include',
         headers:{'content-type':'application/json'},
@@ -126,7 +126,7 @@ export const getUserData=createAsyncThunk('getUserData',
   async()=>{
     try{
       console.log('in get user Data')
-    const res=await fetch('http://localhost:3001/user/get-token',{
+    const res=await fetch(`${url}/user/get-token`,{
       method:"GET",
       credentials:'include',
     })
