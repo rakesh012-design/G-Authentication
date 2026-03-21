@@ -1,0 +1,55 @@
+.main{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+
+}
+
+.header svg{
+  fill: red;
+  font-size: 50px;
+}
+
+.content{
+  width: 20%;
+}
+
+header{
+  position: absolute;
+  top: 0%;
+  width: 100%;
+}
+ul{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20%;
+  list-style: none;
+}
+.menu{
+  background-color: blue;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  width: 10%;
+  color: white;
+  height: fit-content;
+  padding: 5px;
+}
+.menuItem{
+  padding: 10px;
+  height: fit-content;
+  background-color: #6a6464;
+  border: 2px solid red;
+  border-radius: 2%;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
