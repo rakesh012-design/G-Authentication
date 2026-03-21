@@ -14,7 +14,7 @@ const dirName=path.resolve()
 
 
 app.use(cors({
-  origin:['http://localhost:5173','http://localhost:5174','http://localhost:3001'],
+  origin:['http://localhost:5173','http://localhost:5174','http://localhost:3001','https://g-authentication.vercel.app'],
   credentials:true,
   allowedHeaders:['Content-Type','Authorization']
 }))
