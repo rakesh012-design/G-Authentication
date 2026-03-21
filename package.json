@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node BackEnd/app.js",
-    "start": "cross-env NODE_ENV=production node BackEnd/app.js",
-    "build": "npm install && cd Front-end-react && npm install && npm run build"
+    "start": "node BackEnd/app.js",
+    "build": "npm install && cd Front-end-react && npm install --production=false && npm run build"
   },
   "keywords": [],
   "author": "",
