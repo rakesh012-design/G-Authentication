@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development node BackEnd/app.js",
     "start": "cross-env NODE_ENV=production node BackEnd/app.js",
-    "build": "npm install && npm install --prefix Front-end-react && npm run build --prefix Front-end-react"
+    "build": "npm install && npm install --prefix Front-end-react --production=false && npm run build --prefix Front-end-react"
   },
   "keywords": [],
   "author": "",
