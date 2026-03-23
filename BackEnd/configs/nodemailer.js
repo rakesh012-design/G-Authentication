@@ -11,6 +11,9 @@
       user:process.env.GMAIL_MAIL,
       pass:process.env.GMAIL_APP_PASSWORD
     },
+    connectionTimeout: 10000, 
+    greetingTimeout: 10000,
+    socketTimeout: 10000
   })
 
   export const sendWelcomeEmail=async(email,userName)=>{
