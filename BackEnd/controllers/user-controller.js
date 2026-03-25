@@ -28,7 +28,7 @@ export const signupUser=async(req,res,next)=>{
     })
     //await sendEmailVerification(user)
     await admin.firestore().collection('users').doc(uid).set(newUser.toFireStore())
-    await sendWelcomeEmail(email,userName)
+    sendWelcomeEmail(email,userName)
     const sessionCookie=await admin.auth().createSessionCookie(idToken,{expiresIn:1000*60*10})
     res.cookie('session',sessionCookie,{
       maxAge:60*10*1000,
