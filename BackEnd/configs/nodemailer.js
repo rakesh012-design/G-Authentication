@@ -8,13 +8,9 @@
     host:'smtp.gmail.com',
     secure:'true',
     port:465,
-    service:'gmail',
     auth:{
       user:process.env.GMAIL_MAIL,
       pass:process.env.GMAIL_APP_PASSWORD
-    },
-    tls:{
-      rejectUnauthorized: false
     },
     connectionTimeout: 10000, 
     greetingTimeout: 10000,
