@@ -46,7 +46,8 @@ const Login = () => {
           <Button variant='contained' fullWidth type='submit'>{loading ? 'Loading....' : 'Login'}</Button>
         </form>
       </div>
-      <div className={styles.googleLogin}><Button fullWidth variant='outlined' startIcon={<FcGoogle />} 
+      <div className={styles.googleLogin}>
+        <Button fullWidth variant='outlined' startIcon={<FcGoogle />} 
       onClick={googleLogin}
       >Login with google</Button></div>
       <div className="signup">

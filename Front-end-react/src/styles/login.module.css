@@ -9,12 +9,6 @@
   
 }
 
-.container-form{
-  width: 25%;
-  height: 25%;
-
-
-}
 .containerForm form{
   display: flex;
   flex-direction: column;
@@ -58,8 +52,3 @@
   border: none;
   
 }
-.googleLogin{
-  width: 17%;
-  margin-top: 10px;
-}
-
