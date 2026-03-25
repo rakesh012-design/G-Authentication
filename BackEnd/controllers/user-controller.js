@@ -5,7 +5,7 @@ import admin from '../configs/firebaseAdmin.js'
 import CustomError from './Error.js'
 import User from '../models/User.js'
 import {sendWelcomeEmail} from '../configs/nodemailer.js'
-
+import {ResendSendWelcomeEmail} from '../configs/resend.js'
 
 export const signupUser=async(req,res,next)=>{
   try{
@@ -18,7 +18,6 @@ export const signupUser=async(req,res,next)=>{
     if(!emailCheck.empty){
       throw duplicateEmailError()
     }
-    
     const userCredential=await createUserWithEmailAndPassword(auth,email,password)
     const user=userCredential.user*/
     const newUser=new User({
@@ -28,7 +27,12 @@ export const signupUser=async(req,res,next)=>{
     })
     //await sendEmailVerification(user)
     await admin.firestore().collection('users').doc(uid).set(newUser.toFireStore())
+    if(process.env.NODE_ENV==='production'){
+      ResendSendWelcomeEmail(email,userName)
+    }
+    else{
     sendWelcomeEmail(email,userName)
+  }
     const sessionCookie=await admin.auth().createSessionCookie(idToken,{expiresIn:1000*60*10})
     res.cookie('session',sessionCookie,{
       maxAge:60*10*1000,
